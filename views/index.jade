@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= 'Node.js Wechat JS-SDK'
+  h2 后端
+  div 使用 Node.js + Express.js 。
+  ol
+   li 使用 Ngrok 内网穿透，获得临时域名。
+   li 设置 JS 接口安全域名。
+   li 获取 ACCESS_TOKEN 。
+   li 获取  jsapi_ticket 。
+   li 生成签名算法，以接口形式给到前端。
+  h2 前端
+  div 调用接口获取签名时间戳、随机字符串等以及签名，注入 JS-SDK 配置，完成自定义分享等功能。
+  ol
+    li 引入 JS http://res.wx.qq.com/open/js/jweixin-1.4.0.js 。
+    li 通过config接口注入权限验证配置。
+    li 实现自定义分享等功能。
+
+  block script
+    script(type="text/javascript", src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js")
+    script(type="text/javascript", src="https://unpkg.com/axios/dist/axios.min.js")
+    script(type="text/javascript", src="/javascripts/wechat-js-sdk.js")

@@ -1,0 +1,12 @@
+# dependencies
+node_modules
+
+# logs
+npm-debug.log
+
+# IDE
+.idea
+.vscode
+
+# configure
+config/wechat.js

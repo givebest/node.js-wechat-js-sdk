@@ -1,22 +1,68 @@
 # Node.js Wechat JS-SDK
 
+使用 Node.js + Express.js 获取微信签名，使用 Ngrok 内网穿透，完成 JS-SDK 配置，实现微信自定义分享等功能。
+
+----
+
+## 使用
+
+### 1. 完善微信配置文件。
+
+> 路径：./config/wechat.js
+
+```js
+const wechatConfig = {
+  domain: 'http://wwww.natappfree.cc/',
+  expiresIn: 7200,
+  appid: '',
+  secret: ''
+}
+
+module.exports = wechatConfig
+```
+
+### 2. 安装
+
+```bash
+npm install
+```
+
+### 3. 运行
+
+```bash
+npm start
+```
+
 ## 后端
 
-### 1. 获取 access_token     
+### 1. 使用 Ngrok 内网穿透，获得临时域名。
+
+* ngrok.com，国外服务，推荐，只要注册就可以使用。
+* natapp.cn，国内服务，必须实名认证才能使用。
+
+### 2. 申请微信公众号测试号。
+
+> https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&t=sandbox/index
+
+### 3. 设置 JS 接口安全域名
+
+> 先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+
+### 4. 获取 access_token
 
 #### 官方资料
 
 * 文档：https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183
-* 官方在线测试：https://mp.weixin.qq.com/debug/  
+* 官方在线测试：https://mp.weixin.qq.com/debug/
 
-#### 接口调用请求  
+#### 接口调用请求
 
 ```
-https请求方式: GET   
+https请求方式: GET
 
 https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
 ```
-  
+
 #### 响应
 
 ```json
@@ -24,23 +70,23 @@ https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID
 ```
 
 
-### 2. 获取 jsapi_ticket   
+### 5. 获取 jsapi_ticket
 
 #### 官方资料
 
 * 文档：https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115
- 
 
-#### 请求     
+
+#### 请求
 
 ```
-https请求方式: GET   
+https请求方式: GET
 
-https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi   
+https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
 ```
- 
 
-#### 响应    
+
+#### 响应
 
 ```json
 {
@@ -52,10 +98,10 @@ https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
 ```
 
 
-### 3. 签名算法    
+### 6. 签名算法
 
 * 文档：https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115
-* 官方在线测试：https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign
+* 微信 JS 接口签名校验工具：https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign
 
 
 ```json
@@ -70,15 +116,12 @@ sha1(jsapi_ticket=sM4AOVdWfPE4DxkXGEs8VMCPGGVi4C3VM0P37wVUCFvkVAy_90u5h9nbSlYy3-
 
 * 文档：https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115
 
-### 1. 设置 JS 接口安全域名
 
-> 先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
-
-### 2. 引入 JS 
+### 1. 引入 JS
 
 > http://res.wx.qq.com/open/js/jweixin-1.4.0.js
 
-### 3. 通过config接口注入权限验证配置
+### 2. 通过config接口注入权限验证配置
 
 ```js
 wx.config({
@@ -91,7 +134,7 @@ wx.config({
 })
 ```
 
-### 4. 通过ready接口处理成功验证
+### 3. 通过ready接口处理成功验证
 
 ```js
 wx.ready(function(){
@@ -99,7 +142,7 @@ wx.ready(function(){
 });
 ```
 
-### 5. 通过error接口处理失败验证
+### 4. 通过error接口处理失败验证
 
 ```js
 wx.error(function(res){
