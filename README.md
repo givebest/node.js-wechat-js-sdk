@@ -152,7 +152,7 @@ wx.error(function(res){
 
 ## License
 
-MIT © 2019 [givebest](https://github.com/givebest)
+[MIT](./LICENSE) © 2019 [givebest](https://github.com/givebest)
 
 
 
