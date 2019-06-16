@@ -150,6 +150,9 @@ wx.error(function(res){
 });
 ```
 
+## License
+
+[MIT](./LICENSE) © 2019 [givebest](https://github.com/givebest)
 
 
 
