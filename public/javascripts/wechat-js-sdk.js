@@ -43,7 +43,7 @@ function config (params = {}) {
         'onMenuShareAppMessage',
         // 'onMenuShareQQ',
         // 'chooseWXPay',
-        // 'scanQRCode'
+        'scanQRCode'
       ] // 必填，需要使用的JS接口列表
   })
 }
@@ -118,9 +118,12 @@ const actions = {
     wx.scanQRCode({
       needResult: 1,
       success: (res = {}) => {
+        // console.log(JSON.stringify(res))
         params.success && params.success(res.resultStr);
       },
       complete: res => {
+        // console.log('complete', JSON.stringify(res))
+        alert('complete: ' + JSON.stringify(res))
         params.complete && params.complete(res)
       }
     })
@@ -143,9 +146,31 @@ init(function(actions) {
     title: "标题",
     desc: "描述",
     link: window.location.href,
-    imgUrl: "http://56m8gw.natappfree.cc/images/logo.jpg",
+    imgUrl: "http://r5em5g.natappfree.cc/images/logo.jpg",
     success: () => {
       console.log("分享成功");
     }
   });
+
+
+  $('scanQR').addEventListener('click', function(e) {
+    alert('scanQR')
+    actions.scanQRCode({
+      success: res => {
+        console.log('scan success', res)
+        // alert(JSON.stringify(res))
+        $('htmlStr').innerHTML = res
+      },
+      complate: res => {
+        console.log('scan complate', res)
+        // alert(JSON.stringify(res))
+      }
+    })
+  }, false)
+
 });
+
+
+function $(ele) {
+  return document.getElementById(ele)
+}

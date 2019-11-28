@@ -62,7 +62,7 @@ if ((nowTime - tokenTime) >= expiresIn) {
       jsonfile.writeFile(cacheConfigFile, cacheJSON, function (err) {
         if (err) console.error(err)
       });
-  
+
   // 3. 签名
       router.get('/', function(req, res, next) {
         let url = req.query.url
@@ -79,7 +79,7 @@ if ((nowTime - tokenTime) >= expiresIn) {
 } else {
   // 缓存读取
   router.get('/', function(req, res, next) {
-    let url = req.query.url
+    let url = req.query.url || 'http://fu8ibf.natappfree.cc/'
     let signature = sign(cacheConfig.ticket, url);
     signature.appId = wechatConfig.appid
     res.json(signature)
