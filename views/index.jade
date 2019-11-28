@@ -21,10 +21,13 @@ block content
 
   div#htmlStr result
 
-  ul
+  ul#list
+    li <button id="customizeShare">自定义分享</button>
+
     li <button id="scanQR">扫码</button>
 
   block script
     script(type="text/javascript", src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js")
     script(type="text/javascript", src="https://unpkg.com/axios/dist/axios.min.js")
     script(type="text/javascript", src="/javascripts/wechat-js-sdk.js")
+    script(type="text/javascript", src="/javascripts/jssdk-init.js")

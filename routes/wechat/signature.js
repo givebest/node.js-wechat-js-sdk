@@ -79,7 +79,7 @@ if ((nowTime - tokenTime) >= expiresIn) {
 } else {
   // 缓存读取
   router.get('/', function(req, res, next) {
-    let url = req.query.url || 'http://fu8ibf.natappfree.cc/'
+    let url = req.query.url || 'http://84iumr.natappfree.cc/pickup/'
     let signature = sign(cacheConfig.ticket, url);
     signature.appId = wechatConfig.appid
     res.json(signature)
